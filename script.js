@@ -1,5 +1,21 @@
-// const player = new Plyr('audio', {controls: ['play', 'progress', 'current-time']});
+var audio = new Audio("https://vincent1403.github.io/Sounds/fall_in_love.mp3");
 
-const players = Array.from(document.querySelectorAll('.js-player')).map(p => new Plyr(p, {controls: ['play', 'progress', 'current-time']}));
+$('#play-pause-button').on("click",function(){
+  if($(this).hasClass('fa-play'))
+   {
+     $(this).removeClass('fa-play');
+     $(this).addClass('fa-pause');
+     audio.play();
+   }
+  else
+   {
+     $(this).removeClass('fa-pause');
+     $(this).addClass('fa-play');
+     audio.pause();
+   }
+});
 
-// const players = Plyr.setup('.js-player');
+audio.onended = function() {
+     $("#play-pause-button").removeClass('fa-pause');
+     $("#play-pause-button").addClass('fa-play');
+};
